@@ -13,20 +13,19 @@ from beeai_agents.nodes import(BusinessCaseState,
     compile_document, 
     route_gather)
 
-# profile = os.getenv("AWS_PROFILE", None)
-
-medium_model = init_chat_model(
-    model_provider = "ollama",
-    model="granite3.3:8b",
-    temperature=0,
-    max_tokens=2000
-    )
 
 small_model = init_chat_model(
-    model_provider = "ollama",
-    model="granite3.3:8b",
-    temperature=0,
-    max_tokens=4000
+    model_provider = os.getenv("LLM_PROVIDER"),
+    model = os.getenv("LLM_MODEL"),
+    temperature = 0,
+    max_tokens = 2000
+    )
+
+medium_model = init_chat_model(
+    model_provider = os.getenv('LLM_PROVIDER'),
+    model = os.getenv('LLM_MODEL'),
+    temperature = 0,
+    max_tokens = 4000
     )
 
 

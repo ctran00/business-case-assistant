@@ -14,16 +14,27 @@ graph = graph.compile(checkpointer=memory)
 server = Server()
 @server.agent(
     name="Business Case Assistant",
-    description="The Business Case Assistant uses advanced language models and LangGraph to interview the user about project requirements and create a business case document based on the user's responses.",
+    description="The Business Case Assistant uses advanced language models \
+        and LangGraph to interview the user about project requirements and create \
+        a business case document based on the user's responses.",
     metadata=Metadata(
         version="1.0.0",
-        framework="LangChain",
+        framework="LangGraph",
         programming_language="Python",
         ui={"type":"chat",
             "user_greeting": """To get started, could you please share the key points or objectives of your business case?"""},
         author={
             "name": "Caitlin Tran",
         },
+        recommended_models=[
+            "claude-3-7-sonnet-latest",
+        ],
+        env=[
+            {"name": "LLM_MODEL", "description": "Model to use from the specified OpenAI-compatible API."},
+            {"name": "LLM_API_BASE", "description": "Base URL for OpenAI-compatible API endpoint"},
+            {"name": "LLM_API_KEY", "description": "API key for OpenAI-compatible API endpoint"},
+            {"name": "LLM_PROVIDER", "description": "The provider the LLM is from"}
+        ],
     )
 )
 async def business_case_assistant(input: list[Message], context: Context) -> AsyncGenerator[RunYield, RunYieldResume]:
