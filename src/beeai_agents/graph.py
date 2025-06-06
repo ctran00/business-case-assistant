@@ -1,8 +1,8 @@
-from langchain_aws import ChatBedrock
+from langchain.chat_models import init_chat_model
 from langgraph.graph import StateGraph, END, MessagesState
 import os
 
-from agent.nodes import(BusinessCaseState, 
+from beeai_agents.nodes import(BusinessCaseState, 
     gather_requirements, 
     write_alternatives_and_analysis, 
     write_introduction, 
@@ -13,21 +13,22 @@ from agent.nodes import(BusinessCaseState,
     compile_document, 
     route_gather)
 
-profile = os.getenv("AWS_PROFILE", None)
+# profile = os.getenv("AWS_PROFILE", None)
 
-medium_model = ChatBedrock(
-    model_id = "us.meta.llama3-2-90b-instruct-v1:0",
-    credentials_profile_name = profile,
-    max_tokens = 2000,
-    temperature = 0,
+medium_model = init_chat_model(
+    model_provider = "ollama",
+    model="granite3.3:8b",
+    temperature=0,
+    max_tokens=2000
     )
 
-small_model = ChatBedrock(
-    model_id = "us.anthropic.claude-3-7-sonnet-20250219-v1:0",
-    credentials_profile_name = profile,
-    max_tokens = 4000,
-    temperature = 0,
+small_model = init_chat_model(
+    model_provider = "ollama",
+    model="granite3.3:8b",
+    temperature=0,
+    max_tokens=4000
     )
+
 
 def build_graph():
     # Create the graph
@@ -44,7 +45,6 @@ def build_graph():
     graph.add_node("Compiling Document", compile_document)
 
     # Define the edges
-
     graph.set_entry_point("Gathering Requirements")
     graph.add_conditional_edges("Gathering Requirements", route_gather)
     graph.add_edge("Writing Introduction", "Writing General Project Information")

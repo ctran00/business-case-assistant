@@ -1,7 +1,7 @@
 {
   "dockerfile_lines": [],
   "graphs": {
-    "bca":"./src/business_case_assistant/graph.py:graph" 
+    "bca":"./graph.py:graph" 
   },
   "env": "./.env",
   "python_version": "3.11",
