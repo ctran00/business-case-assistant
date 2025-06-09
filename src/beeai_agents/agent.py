@@ -33,7 +33,6 @@ server = Server()
             {"name": "LLM_MODEL", "description": "Model to use from the specified OpenAI-compatible API."},
             {"name": "LLM_API_BASE", "description": "Base URL for OpenAI-compatible API endpoint"},
             {"name": "LLM_API_KEY", "description": "API key for OpenAI-compatible API endpoint"},
-            {"name": "LLM_PROVIDER", "description": "The provider the LLM is from"}
         ],
     )
 )

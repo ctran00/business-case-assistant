@@ -1,5 +1,7 @@
 from langchain.chat_models import init_chat_model
 from langgraph.graph import StateGraph, END, MessagesState
+from langchain_openai import ChatOpenAI
+from beeai_agents.configuration import Configuration
 import os
 
 from beeai_agents.nodes import(BusinessCaseState, 
@@ -13,21 +15,24 @@ from beeai_agents.nodes import(BusinessCaseState,
     compile_document, 
     route_gather)
 
+config = Configuration()
 
-small_model = init_chat_model(
-    model_provider = os.getenv("LLM_PROVIDER"),
-    model = os.getenv("LLM_MODEL"),
-    temperature = 0,
-    max_tokens = 2000
+small_model = ChatOpenAI(
+        model=config.llm_model,
+        openai_api_key=config.llm_api_key,
+        openai_api_base=config.llm_api_base,
+        temperature=0,
+        max_tokens=2000
     )
 
-medium_model = init_chat_model(
-    model_provider = os.getenv('LLM_PROVIDER'),
-    model = os.getenv('LLM_MODEL'),
-    temperature = 0,
-    max_tokens = 4000
+medium_model = ChatOpenAI(
+        model=config.llm_model,
+        openai_api_key=config.llm_api_key,
+        openai_api_base=config.llm_api_base,
+        temperature=0,
+        max_tokens=4000
     )
-
+    
 
 def build_graph():
     # Create the graph
