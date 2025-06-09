@@ -1,4 +1,4 @@
- Business Case Assistant
+## Business Case Assistant
 A tool for writing business case documents using AI agents.
 
 ## Overview
