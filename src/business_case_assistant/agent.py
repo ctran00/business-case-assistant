@@ -3,6 +3,7 @@ from acp_sdk.models import Message, MessagePart
 from acp_sdk.server import Context, RunYield, RunYieldResume, Server
 from acp_sdk import Metadata
 from functools import reduce
+from textwrap import dedent
 import os, sys
 from langgraph.checkpoint.memory import MemorySaver
 from business_case_assistant.graph import build_graph
