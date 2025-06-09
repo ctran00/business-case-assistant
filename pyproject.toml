@@ -1,7 +1,7 @@
 [project]
-name = "beeai-agents"
+name = "business-case-assistant"
 version = "0.1.1"
-description = "Add your description here"
+description = "Business case writer using LangGraph"
 readme = "README.md"
 authors = [{ name = "IBM Corp." }]
 requires-python = ">=3.11,<4.0"
@@ -21,7 +21,7 @@ line-length = 120
 target-version = "py311"
 
 [project.scripts]
-server = "beeai_agents.agent:run"
+server = "business_case_assistant.agent:run"
 
 [build-system]
 requires = ["hatchling"]

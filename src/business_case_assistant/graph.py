@@ -1,10 +1,10 @@
 from langchain.chat_models import init_chat_model
 from langgraph.graph import StateGraph, END, MessagesState
 from langchain_openai import ChatOpenAI
-from beeai_agents.configuration import Configuration
+from business_case_assistant.configuration import Configuration
 import os
 
-from beeai_agents.nodes import(BusinessCaseState, 
+from business_case_assistant.nodes import(BusinessCaseState, 
     gather_requirements, 
     write_alternatives_and_analysis, 
     write_introduction, 
